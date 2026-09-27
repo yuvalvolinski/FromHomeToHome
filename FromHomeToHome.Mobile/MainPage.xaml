@@ -30,6 +30,12 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+            <Button
+                x:Name="TestBtn"
+                Text="Test Button"
+                SemanticProperties.Hint="Button for quick testing"
+                Clicked="OnTestClicked"
+                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

@@ -20,5 +20,10 @@
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
+
+        private async void OnTestClicked(object? sender, EventArgs e)
+        {
+            await DisplayAlert("Test", "Test button clicked.", "OK");
+        }
     }
 }
