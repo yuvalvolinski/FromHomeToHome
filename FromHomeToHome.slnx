@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="FromHomeToHome.Backend/FromHomeToHome.Backend.csproj" />
+  <Project Path="FromHomeToHome.Core/FromHomeToHome.Core.csproj" />
+  <Project Path="FromHomeToHome.Mobile/FromHomeToHome.Mobile.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
