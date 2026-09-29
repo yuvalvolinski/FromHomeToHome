@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FromHomeToHome.Mobile.Views.RegisterPage"
+             Title="הרשמה למשחק"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!-- תמונת רקע קבועה עם שכבת הכהיה -->
+        <Image Source="mainwallp.png" Aspect="AspectFill" />
+        <BoxView BackgroundColor="#0F172A" Opacity="0.85" />
+
+        <ScrollView VerticalOptions="Center">
+            <VerticalStackLayout Spacing="16" Padding="30">
+
+                <!-- כותרת -->
+                <Label Text="יצירת חשבון חדש"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+
+                <Label Text="הצטרף למסע מבית לבית"
+                       FontSize="14"
+                       TextColor="#94A3B8"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,15" />
+
+                <!-- שדה שם משתמש -->
+                <Border Stroke="#334155" BackgroundColor="#1E293B" StrokeShape="RoundRectangle 12" Padding="12,0">
+                    <Entry Placeholder="שם משתמש"
+                           PlaceholderColor="#64748B"
+                           TextColor="White"
+                           Text="{Binding Username}" />
+                </Border>
+
+                <!-- שדה אימייל -->
+                <Border Stroke="#334155" BackgroundColor="#1E293B" StrokeShape="RoundRectangle 12" Padding="12,0">
+                    <Entry Placeholder="דואר אלקטרוני"
+                           Keyboard="Email"
+                           PlaceholderColor="#64748B"
+                           TextColor="White"
+                           Text="{Binding Email}" />
+                </Border>
+
+                <!-- שדה סיסמה -->
+                <Border Stroke="#334155" BackgroundColor="#1E293B" StrokeShape="RoundRectangle 12" Padding="12,0">
+                    <Entry Placeholder="סיסמה"
+                           IsPassword="True"
+                           PlaceholderColor="#64748B"
+                           TextColor="White"
+                           Text="{Binding Password}" />
+                </Border>
+
+                <!-- שדה אימות סיסמה -->
+                <Border Stroke="#334155" BackgroundColor="#1E293B" StrokeShape="RoundRectangle 12" Padding="12,0">
+                    <Entry Placeholder="אימות סיסמה"
+                           IsPassword="True"
+                           PlaceholderColor="#64748B"
+                           TextColor="White"
+                           Text="{Binding ConfirmPassword}" />
+                </Border>
+
+                <!-- הודעת שגיאה אם יש -->
+                <Label Text="{Binding ErrorMessage}"
+                       TextColor="#EF4444"
+                       FontSize="13"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding HasError}" />
+
+                <!-- כפתור הרשמה -->
+                <Button Text="הרשם עכשיו"
+                        Command="{Binding RegisterCommand}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#2563EB"
+                        CornerRadius="25"
+                        HeightRequest="52"
+                        Margin="0,10,0,0" />
+
+                <!-- חזרה למסך הקודם / התחברות -->
+                <Label Text="כבר יש לך חשבון? התחבר כאן"
+                       FontSize="13"
+                       TextColor="#38BDF8"
+                       HorizontalOptions="Center"
+                       Margin="0,10,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLoginCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

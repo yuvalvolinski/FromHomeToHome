@@ -1,10 +1,13 @@
-﻿namespace FromHomeToHome.Mobile
+﻿using FromHomeToHome.Mobile.Views;
+
+namespace FromHomeToHome.Mobile
 {
     public partial class AppShell : Shell
     {
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
         }
     }
 }
