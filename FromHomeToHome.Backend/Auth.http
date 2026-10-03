@@ -1,0 +1,29 @@
+### Auth Register Endpoint
+POST https://localhost:7205/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser123",
+  "email": "testuser@example.com",
+  "password": "SecurePassword123"
+}
+
+### Auth Register - Hebrew Test
+POST https://localhost:7205/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "משתמש1",
+  "email": "user1@test.co.il",
+  "password": "TestPass123"
+}
+
+### Test with existing user (should return 409 Conflict)
+POST https://localhost:7205/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser123",
+  "email": "duplicate@example.com",
+  "password": "AnotherPass123"
+}
