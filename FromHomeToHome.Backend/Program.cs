@@ -17,7 +17,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapGet("/", () => "Hello World!"); 
+app.MapGet("/", () => "Hello World!");
+app.MapGet("/signup", (string name) => "hello " + name);
 
 //app.UseHttpsRedirection();
 
