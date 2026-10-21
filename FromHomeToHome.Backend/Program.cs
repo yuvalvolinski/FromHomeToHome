@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/", () => "Hello World!"); 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
