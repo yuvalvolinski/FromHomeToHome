@@ -6,4 +6,9 @@ public partial class RegisterPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private async void OnAlreadyHaveAccountClicked(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync("..");
+	}
 }

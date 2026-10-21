@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Dockerfile" />
+  </Folder>
   <Project Path="FromHomeToHome.Backend/FromHomeToHome.Backend.csproj" />
   <Project Path="FromHomeToHome.Core/FromHomeToHome.Core.csproj" />
   <Project Path="FromHomeToHome.Mobile/FromHomeToHome.Mobile.csproj">

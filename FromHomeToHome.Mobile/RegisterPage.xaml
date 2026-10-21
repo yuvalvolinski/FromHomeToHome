@@ -80,15 +80,13 @@
                         Margin="0,10,0,0" />
 
                 <!-- חזרה למסך הקודם / התחברות -->
-                <Label Text="כבר יש לך חשבון? התחבר כאן"
-                       FontSize="13"
-                       TextColor="#38BDF8"
-                       HorizontalOptions="Center"
-                       Margin="0,10,0,0">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToLoginCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Button Text="כבר יש לך חשבון? התחבר כאן"
+                        Clicked="OnAlreadyHaveAccountClicked"
+                        FontSize="13"
+                        TextColor="#38BDF8"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Margin="0,10,0,0" />
 
             </VerticalStackLayout>
         </ScrollView>
