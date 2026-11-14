@@ -71,14 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="RegisterPage.xaml.cs">
-	    <DependentUpon>RegisterPage.xaml</DependentUpon>
-	  </Compile>
+		<ProjectReference Include="../FromHomeToHome.Core/FromHomeToHome.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="RegisterPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
+		<Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 

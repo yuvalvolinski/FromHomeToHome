@@ -8,6 +8,7 @@ public partial class RegisterPage : ContentPage
     {
         InitializeComponent();
         BindingContext = new RegisterViewModel();
+        System.Diagnostics.Debug.WriteLine("RegisterPage initialized with RegisterViewModel");
     }
 
     private async void OnAlreadyHaveAccountClicked(object sender, EventArgs e)

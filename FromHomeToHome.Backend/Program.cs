@@ -33,8 +33,8 @@ if (app.Environment.IsDevelopment())
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/signup", (string name) => "hello " + name);
 
-// HTTPS redirection
-app.UseHttpsRedirection();
+// Note: HTTPS redirection disabled for local development
+// app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 

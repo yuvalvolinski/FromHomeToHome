@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using FromHomeToHome.Mobile.Services;
+using FromHomeToHome.Mobile.ViewModels;
 
 namespace FromHomeToHome.Mobile
 {
@@ -15,8 +17,15 @@ namespace FromHomeToHome.Mobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Register Services
+            builder.Services.AddSingleton<IAuthService, AuthService>();
+
+            // Register ViewModels
+            builder.Services.AddSingleton<RegisterViewModel>();
+            builder.Services.AddSingleton<MainViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
