@@ -38,6 +38,7 @@
             <!-- כפתור כניסה (בולט, גדול ובעל נוכחות) -->
             <Button x:Name="BtnLogin"
                     Text="כניסה"
+                    Command="{Binding GoToLoginCommand}"
                     FontSize="20"
                     FontAttributes="Bold"
                     TextColor="White"

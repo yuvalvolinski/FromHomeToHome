@@ -3,6 +3,8 @@ using FromHomeToHome.Backend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseUrls("http://0.0.0.0:3000");
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -27,6 +29,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+// Test endpoints
+app.MapGet("/", () => "Hello World!");
+app.MapGet("/signup", (string name) => "hello " + name);
+
+// HTTPS redirection
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
