@@ -19,9 +19,11 @@ namespace FromHomeToHome.Mobile
 
             // Register Services
             builder.Services.AddSingleton<IAuthService, AuthService>();
+            builder.Services.AddSingleton<IUserSessionService, UserSessionService>();
 
             // Register ViewModels
             builder.Services.AddSingleton<RegisterViewModel>();
+            builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<MainViewModel>();
 
 #if DEBUG

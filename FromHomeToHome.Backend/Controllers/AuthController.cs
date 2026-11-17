@@ -65,4 +65,38 @@ public class AuthController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "אירעה שגיאה פנימית בשרת. נא לנסות שוב מאוחר יותר.");
         }
     }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    {
+        if (loginDto == null)
+        {
+            _logger.LogWarning("Login failed: Null DTO received.");
+            return BadRequest("נתוני ההתחברות לא תקינים.");
+        }
+
+        if (string.IsNullOrWhiteSpace(loginDto.Email) || string.IsNullOrWhiteSpace(loginDto.Password))
+        {
+            _logger.LogWarning("Login failed: Missing required fields. Email={Email}", loginDto.Email);
+            return BadRequest("נא למלא אימייל וסיסמה.");
+        }
+
+        try
+        {
+            _logger.LogInformation("Starting login process for Email={Email}", loginDto.Email);
+
+            var user = await _userService.LoginAsync(loginDto);
+            if (user == null)
+            {
+                return Unauthorized("כתובת האימייל או הסיסמה שגויים.");
+            }
+
+            return Ok(user);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unhandled server error occurred while logging in Email={Email}", loginDto.Email);
+            return StatusCode(StatusCodes.Status500InternalServerError, "אירעה שגיאה פנימית בשרת. נא לנסות שוב מאוחר יותר.");
+        }
+    }
 }

@@ -7,6 +7,7 @@ namespace FromHomeToHome.Mobile.Services;
 public interface IAuthService
 {
     Task<bool> RegisterAsync(RegisterDto registerDto);
+    Task<LoginResponseDto?> LoginAsync(LoginDto loginDto);
 }
 
 public class AuthService : IAuthService
@@ -17,7 +18,6 @@ public class AuthService : IAuthService
     {
         System.Diagnostics.Debug.WriteLine("AuthService: Creating HttpClient");
 
-        // Create HttpClient with certificate validation disabled for development
         var handler = new HttpClientHandler
         {
             AllowAutoRedirect = false,
@@ -41,7 +41,6 @@ public class AuthService : IAuthService
 
             System.Diagnostics.Debug.WriteLine($"AuthService.RegisterAsync: Response status = {response.StatusCode}");
 
-            // Check for redirects
             if ((int)response.StatusCode == 307 || (int)response.StatusCode == 308)
             {
                 System.Diagnostics.Debug.WriteLine($"AuthService.RegisterAsync: Redirect detected!");
@@ -67,5 +66,49 @@ public class AuthService : IAuthService
             return false;
         }
     }
-}
 
+    public async Task<LoginResponseDto?> LoginAsync(LoginDto loginDto)
+    {
+        try
+        {
+            System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: Starting login for {loginDto.Email}");
+            System.Diagnostics.Debug.WriteLine($"Posting to: {ApiConfig.LoginEndpoint}");
+
+            var response = await _httpClient.PostAsJsonAsync(
+                ApiConfig.LoginEndpoint,
+                loginDto);
+
+            System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: Response status = {response.StatusCode}");
+
+            if ((int)response.StatusCode == 307 || (int)response.StatusCode == 308)
+            {
+                System.Diagnostics.Debug.WriteLine("AuthService.LoginAsync: Redirect detected!");
+                System.Diagnostics.Debug.WriteLine($"Location header: {response.Headers.Location}");
+            }
+
+            if (response.IsSuccessStatusCode)
+            {
+                var user = await response.Content.ReadFromJsonAsync<LoginResponseDto>();
+                System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: Login successful for {user?.Username}");
+                return user;
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: Login failed - {content}");
+                return null;
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: HttpRequestException - {ex.Message}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: Exception - {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"AuthService.LoginAsync: StackTrace - {ex.StackTrace}");
+            return null;
+        }
+    }
+}
