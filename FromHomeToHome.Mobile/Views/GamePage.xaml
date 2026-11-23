@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FromHomeToHome.Mobile.Views.GamePage"
+             Title="GamePage">
+
+    <!-- 1. אזור עליון: ברוך הבא + כפתור התנתקות + כרטיס ניקוד מצטבר -->
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+
+            <!-- פרטי המשתמש והברכה -->
+            <HorizontalStackLayout Grid.Column="0" Spacing="12" VerticalOptions="Center">
+                <Border WidthRequest="52" HeightRequest="52"
+                            BackgroundColor="#38BDF8"
+                            StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="26" />
+                    </Border.StrokeShape>
+                    <Label Text="{Binding UserInitial}"
+                               TextColor="#0F172A"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                </Border>
+
+                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                    <Label Text="מוכן למסע הבא?"
+                               TextColor="#94A3B8"
+                               FontSize="14" />
+                    <Label Text="{Binding WelcomeMessage}"
+                               TextColor="White"
+                               FontSize="24"
+                               FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <!-- כפתור התנתקות מעוצב -->
+            <Border Grid.Column="1"
+                        BackgroundColor="#1E293B"
+                        Stroke="#334155"
+                        StrokeThickness="1"
+                        Padding="12,8"
+                        VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                    <Label Text="התנתק"
+                               TextColor="#F87171"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    <Label Text="🚪"
+                               FontSize="14"
+                               VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+        </Grid>
+
+        <!-- כרטיס סטטוס ניקוד (ללא שינוי) -->
+        <Border BackgroundColor="#1E293B"
+                    Stroke="#334155"
+                    StrokeThickness="1"
+                    Padding="18,14">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="*, Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="הניקוד המצטבר שלך"
+                               TextColor="#94A3B8"
+                               FontSize="13" />
+                    <Label Text="{Binding TotalScore, StringFormat='{0:N0} נק׳'}"
+                               TextColor="#38BDF8"
+                               FontSize="22"
+                               FontAttributes="Bold" />
+                </VerticalStackLayout>
+
+                <Border Grid.Column="1"
+                            BackgroundColor="#0F172A"
+                            StrokeThickness="0"
+                            Padding="12,6"
+                            VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Label Text="{Binding CurrentLevelText}"
+                               TextColor="#E2E8F0"
+                               FontSize="13"
+                               FontAttributes="Bold" />
+                </Border>
+            </Grid>
+        </Border>
+
+            <Button Text="התחל משחק"
+                    Clicked="OnPlayClicked"
+                    BackgroundColor="#38BDF8"
+                    TextColor="#0F172A"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="56" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+    
+    
+    

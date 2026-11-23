@@ -10,6 +10,8 @@ namespace FromHomeToHome.Mobile
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(GamePage), typeof(GamePage));
+            Routing.RegisterRoute(nameof(PlayPage), typeof(PlayPage));
         }
     }
 }

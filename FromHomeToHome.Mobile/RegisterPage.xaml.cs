@@ -13,6 +13,6 @@ public partial class RegisterPage : ContentPage
 
     private async void OnAlreadyHaveAccountClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 }

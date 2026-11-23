@@ -18,10 +18,7 @@ public class MainViewModel
     private async void OnGoToRegister()
     {
         // ניווט אסינכרוני דרך ה-Shell
-
-        Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
         await Shell.Current.GoToAsync(nameof(RegisterPage));
-
     }
 
     private async void OnGoToLogin()

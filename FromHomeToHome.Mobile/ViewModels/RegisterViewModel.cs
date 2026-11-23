@@ -174,8 +174,7 @@ public class RegisterViewModel : INotifyPropertyChanged
                     "הצלחה!",
                     "ההרשמה הצליחה. כעת אתה יכול להתחבר.",
                     "אישור");
-                // Navigate back to login
-                await Shell.Current.GoToAsync("//MainPage");
+                await Shell.Current.GoToAsync("LoginPage");
             }
             else
             {

@@ -20,11 +20,13 @@ namespace FromHomeToHome.Mobile
             // Register Services
             builder.Services.AddSingleton<IAuthService, AuthService>();
             builder.Services.AddSingleton<IUserSessionService, UserSessionService>();
+            builder.Services.AddSingleton<IPlaceImageService, PlaceImageService>();
 
             // Register ViewModels
             builder.Services.AddSingleton<RegisterViewModel>();
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<PlayViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();

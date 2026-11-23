@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FromHomeToHome.Mobile.Views.PlayPage"
+             Title="PlayPage"
+             FlowDirection="RightToLeft"
+             BackgroundColor="#0F172A">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20">
+
+            <Label Text="איפה צולמה התמונה?"
+                   TextColor="White"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="בשלב זה מוצגת תמונה אקראית מהשרת כהכנה למסך המשחק המלא."
+                   TextColor="#CBD5E1"
+                   FontSize="14"
+                   HorizontalTextAlignment="Center" />
+
+            <Border BackgroundColor="#1E293B"
+                    Stroke="#38BDF8"
+                    StrokeThickness="1.5"
+                    HeightRequest="420"
+                    WidthRequest="280"
+                    HorizontalOptions="Center"
+                    Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#000000" Opacity="0.45" Radius="16" Offset="0,6" />
+                </Border.Shadow>
+
+                <Grid>
+                    <Image Source="{Binding ChallengeImageUrl}"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Fill" />
+
+                    <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                       IsVisible="{Binding IsLoading}"
+                                       Color="#38BDF8"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#1E293B"
+                    Stroke="#334155"
+                    StrokeThickness="1"
+                    Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="סטטוס"
+                           TextColor="#38BDF8"
+                           FontSize="15"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding StatusMessage}"
+                           TextColor="#E2E8F0"
+                           FontSize="14" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="טען תמונה אקראית נוספת"
+                    Command="{Binding LoadRandomImageCommand}"
+                    BackgroundColor="#2563EB"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="14"
+                    HeightRequest="52" />
+
+            <Button Text="חזרה למסך המשחקים"
+                    Clicked="OnBackToGameClicked"
+                    BackgroundColor="#38BDF8"
+                    TextColor="#0F172A"
+                    FontAttributes="Bold"
+                    CornerRadius="14"
+                    HeightRequest="52" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

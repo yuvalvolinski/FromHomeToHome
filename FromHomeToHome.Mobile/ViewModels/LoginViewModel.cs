@@ -138,6 +138,7 @@ public class LoginViewModel : INotifyPropertyChanged
                     "ברוך הבא!",
                     $"התחברת בהצלחה, {user.Username}.",
                     "אישור");
+                await Shell.Current.GoToAsync("GamePage");
             }
             else
             {

@@ -12,6 +12,7 @@ builder.Services.AddOpenApi();
 // רישום רכיבי המערכת ב-DI
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<IPlaceImageService, PlaceImageService>();
 builder.Services.AddScoped<DbInitializer>();
 
 var app = builder.Build();
