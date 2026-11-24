@@ -21,6 +21,6 @@ public partial class PlayPage : ContentPage
 
     private async void OnBackToGameClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.Navigation.PopAsync();
     }
 }

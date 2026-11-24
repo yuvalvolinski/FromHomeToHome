@@ -9,6 +9,6 @@ public partial class GamePage : ContentPage
 
 	private async void OnPlayClicked(object sender, EventArgs e)
 	{
-		await Shell.Current.GoToAsync(nameof(PlayPage));
+		await Shell.Current.GoToAsync($"{nameof(GamePage)}/{nameof(PlayPage)}");
 	}
 }
