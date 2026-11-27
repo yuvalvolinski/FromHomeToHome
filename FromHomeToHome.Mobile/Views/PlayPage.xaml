@@ -63,6 +63,14 @@
                     <Label Text="{Binding StatusMessage}"
                            TextColor="#E2E8F0"
                            FontSize="14" />
+                     <Button Text="הצג מפה"
+                             Clicked="OnShowMapClicked"
+                             BackgroundColor="#38BDF8"
+                             TextColor="#0F172A"
+                             FontAttributes="Bold"
+                             CornerRadius="12"
+                             HeightRequest="44"
+                             HorizontalOptions="Start" />
                 </VerticalStackLayout>
             </Border>
 

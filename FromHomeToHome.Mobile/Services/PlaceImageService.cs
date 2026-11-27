@@ -39,10 +39,12 @@ public class PlaceImageService : IPlaceImageService
             return null;
         }
 
-        if (!Uri.TryCreate(image.ImageUrl, UriKind.Absolute, out _))
+        if (string.IsNullOrWhiteSpace(image.ImageUrl))
         {
-            image.ImageUrl = $"{ApiConfig.BaseUrl}{image.ImageUrl}";
+            return null;
         }
+
+        image.ImageUrl = $"{ApiConfig.BaseUrl}{image.ImageUrl}";
 
         return image;
     }

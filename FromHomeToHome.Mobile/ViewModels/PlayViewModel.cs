@@ -109,7 +109,7 @@ public class PlayViewModel : INotifyPropertyChanged
             }
 
             ChallengeImageUrl = image.ImageUrl;
-            StatusMessage = image.Description;
+            StatusMessage = $"{image.Description}\n{ChallengeImageUrl}";
         }
         catch (Exception ex)
         {

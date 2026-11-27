@@ -6,5 +6,8 @@ namespace FromHomeToHome.Core.Models
         public string Name { get; set; } = string.Empty;      // שם האזור
         public string Description { get; set; } = string.Empty;
         public int RequiredScoreToUnlock { get; set; }       // סף נקודות למעבר לרמה הבאה
+        public double MapLatitude { get; set; }
+        public double MapLongitude { get; set; }
+        public double MapRadiusKilometers { get; set; } = 180;
     }
 }
